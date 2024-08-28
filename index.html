@@ -13,22 +13,22 @@
             display: flex; 
             flex-direction: column; 
             min-height: 100vh; 
-            background-color: #f4f4f9; /* Leichtes Grau für besseren Kontrast */
-            color: #333;
+            background-color: #1e1e2f; /* Dunkler Hintergrund für Dark Mode */
+            color: #cfcfcf; /* Helle Schriftfarbe */
         }
         .main-container { 
             display: flex; 
             flex-grow: 1; 
-            gap: 20px; /* Platz zwischen Legende und Chart */
+            gap: 20px; 
             margin-top: 20px;
         }
         .legend { 
             width: 250px; 
             padding-right: 20px; 
-            background-color: #fff; 
+            background-color: #2b2b3d; /* Dunkles Grau für die Legende */
             padding: 15px; 
             border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
         .legend-item { 
             display: flex; 
@@ -44,10 +44,10 @@
         #chart-container { 
             flex-grow: 1; 
             position: relative; 
-            background-color: #fff; 
+            background-color: #2b2b3d; /* Dunkles Grau für den Chart-Container */
             padding: 20px; 
             border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
         }
         .description-page {
             display: none;
@@ -58,7 +58,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 20px;
+            padding: 40px;
             box-sizing: border-box;
             overflow: auto;
             z-index: 1000;
@@ -71,12 +71,17 @@
         }
         .description-page h2 { 
             margin-top: 0; 
+            font-size: 2.5em;
+        }
+        .description-page p {
+            font-size: 1.8em;
+            line-height: 1.6;
         }
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 24px;
+            top: 20px;
+            right: 30px;
+            font-size: 36px;
             cursor: pointer;
         }
         .footer { 
@@ -92,29 +97,29 @@
             gap: 20px; 
         }
         .table {
-            background-color: #fff; 
+            background-color: #2b2b3d; /* Dunkles Grau für Tabellen */
             padding: 15px; 
             border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
         table { 
             width: 100%; 
             border-collapse: collapse; 
-            table-layout: fixed; /* Fixierte Tabellenlayout für gleiche Spaltenbreiten */
+            table-layout: fixed; 
         }
         th, td { 
-            border: 1px solid #ddd; 
+            border: 1px solid #444; /* Dunkleres Grau für Tabellenrahmen */
             padding: 12px; 
             text-align: left; 
         }
         th { 
-            background-color: #f2f2f2; 
-            color: #333; 
+            background-color: #3b3b4d; /* Dunkleres Grau für Tabellenköpfe */
+            color: #cfcfcf; 
         }
         h1.chart-title {
             text-align: center;
             font-size: 28px;
-            color: #333;
+            color: #cfcfcf;
             margin-bottom: 20px;
         }
     </style>
@@ -207,7 +212,7 @@
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
         
-        const jitter = 0.02; // Jitter-Wert, um die Punkte leicht zu versetzen
+        const jitter = 0.02;
 
         const data = [
             {x: 1.875, y: 3.875, label: '3.1.1', name: 'Kompetenzentwicklung', description: 'Die kontinuierliche Kompetenzentwicklung von Vertriebsmitarbeitern ist im B2B-Vertrieb entscheidend, um auf sich wandelnde Marktanforderungen und Kundenbedürfnisse flexibel reagieren zu können. KI-Technologien wie Natural Language Processing (NLP) und Machine Learning (ML) ermöglichen die personalisierte und automatisierte Erstellung von Schulungsinhalten. Diese Technologien analysieren das Lernverhalten, die bisherigen Leistungsdaten sowie spezifische Anforderungen der Mitarbeiter, um maßgeschneiderte Trainingsprogramme zu entwickeln. Darüber hinaus können KI-Systeme Lernfortschritte in Echtzeit überwachen und sofortige Rückmeldungen geben, wodurch das Lernen effizienter und zielgerichteter gestaltet wird. Die Automatisierung dieser Prozesse führt zu einer erheblichen Reduktion der manuellen Aufwände in der Schulungsverwaltung und steigert die Effektivität der Weiterbildungsmaßnahmen, was letztlich die Vertriebsleistung deutlich verbessert.', color: 'green'},
@@ -265,10 +270,17 @@
                             text: 'Transformatives Potenzial',
                             font: {
                                 size: 16
-                            }
+                            },
+                            color: '#cfcfcf'
                         },
                         min: 0,
-                        max: 5
+                        max: 5,
+                        grid: {
+                            color: '#444'
+                        },
+                        ticks: {
+                            color: '#cfcfcf'
+                        }
                     },
                     y: {
                         title: {
@@ -276,10 +288,17 @@
                             text: 'Nutzenpotenzial',
                             font: {
                                 size: 16
-                            }
+                            },
+                            color: '#cfcfcf'
                         },
                         min: 0,
-                        max: 5
+                        max: 5,
+                        grid: {
+                            color: '#444'
+                        },
+                        ticks: {
+                            color: '#cfcfcf'
+                        }
                     }
                 }
             }
